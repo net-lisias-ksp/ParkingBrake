@@ -27,3 +27,4 @@
 [assembly: KSPAssembly("ParkingBrake", ParkingBrake.Version.major, ParkingBrake.Version.minor)]
 
 [assembly: KSPAssemblyDependency("KSPe", 2, 2)]
+[assembly: KSPAssemblyDependency("KSPe.UI", 2, 2)]
