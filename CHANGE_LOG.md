@@ -1,5 +1,8 @@
 # Parking Break :: Change Log
 
+* 2021-0301: 0.4.1 (Maja) for KSP 1.11.1
+	+ Changes
+		- Russian localization by kovakthemost
 * 2021-0207: 0.4.0 (Maja) for KSP 1.11.1
 	+ Changes
 		- KSP 1.11.1 compatibility
