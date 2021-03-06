@@ -1,5 +1,8 @@
 # Parking Break :: Change Log
 
+* 2020-0720: 0.3.0 (Maja) for KSP 1.10.1
+	+ Changes
+		- KSP 1.10 compatibility
 * 2019-1020: 0.2.0 (Maja) for KSP 1.8.1
 	+ Changes
 		- KSP 1.8 compatibility
