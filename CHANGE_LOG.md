@@ -1,5 +1,8 @@
 # Parking Break :: Change Log
 
+* 2019-0428: 0.1.1 (Maja) for KSP 1.7.0
+	+ Changes
+		- KSP 1.7 compatibility
 * 2018-1127: 0.1.0.2 (Maja) for KSP 1.5.1 PRE-RELEASE
 	+ Just for testing purposes
 * 2018-1126: 0.1.0.1 (Maja) for KSP 1.5.1
