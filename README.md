@@ -1,32 +1,47 @@
-# KSP-ParkingBrake
+# ParkingBrake /L Unofficial
+
 KSP mod for stopping sliding of a vessel on a slope.
 
-# Changelog
-## Version 0.4.2
-- Parking brake is disengaged when vessel starts to fly
-- Parking brake is disengaged when you switch off brakes
-- Parking brake added to external command seat
+Unofficial fork by Lisias.
 
-## Version 0.4.1
-- Russian localization by kovakthemost
 
-## Version 0.4.0
-- Recompile for KSP 1.11.1
+## In a Hurry
 
-## Version 0.3.0
-- Recompile for KSP 1.10
+* [Latest Release](https://github.com/net-lisias-kspu/ParkingBrake/releases)
+	+ [Binaries](https://github.com/net-lisias-kspu/ParkingBrake/tree/Archive)
+* [Source](https://github.com/net-lisias-kspu/ParkingBrake)
+* Documentation
+	+ [Project's README](https://github.com/net-lisias-kspu/ParkingBrake/blob/master/README.md)
+	+ [Install Instructions](https://github.com/net-lisias-kspu/ParkingBrake/blob/master/INSTALL.md)
+	+ [Change Log](./CHANGE_LOG.md)
+	+ [TODO](./TODO.md) list
 
-## Version 0.2.0
-- KSP 1.8 compatibility
 
-## Version 0.1.2
-- Recompile for KSP 1.7.1
+## Description
 
-## Version 0.1.1
-- Recompile for KSP 1.7
+Few notes:
 
-## Version 0.1.0.1
-- Speed limit increased to 0.25 m/s
+* Parking Brake is added to every part which has the command module
+* Your vessel must be landed
+* Maximum speed of a vessel must be lower than or equal to 0.25 m/s
+* It is not recommended to use the Parking Brake if you have Ground Tether toggled on (function of USI parts)
 
-## Version 0.1.0
-- Initial release
+
+
+## Installation
+
+Detailed installation instructions are now on its own file (see the [In a Hurry](#in-a-hurry) section) and on the distribution file.
+
+## License:
+
+GPL 3.0.
+
+Please note the copyrights and trademarks in [NOTICE](./NOTICE).
+
+
+## UPSTREAM
+
+* [Maja](https://forum.kerbalspaceprogram.com/index.php?/profile/168379-maja/) ROOT
+	+ [Forum](https://forum.kerbalspaceprogram.com/index.php?/topic/180083-*)
+	+ [SpaceDock](https://spacedock.info/mod/2018/Parking%20Brake)
+	+ [Github](https://github.com/jarosm/KSP-ParkingBrake)
