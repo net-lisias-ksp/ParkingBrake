@@ -1,5 +1,10 @@
 # Parking Break :: Change Log
 
+* 2021-0306: 0.4.2 (Maja) for KSP 1.11.1
+	+ Changes
+		- Parking brake is disengaged when vessel starts to fly
+		- Parking brake is disengaged when you switch off brakes
+		- Parking brake added to external command seat
 * 2021-0301: 0.4.1 (Maja) for KSP 1.11.1
 	+ Changes
 		- Russian localization by kovakthemost
