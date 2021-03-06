@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2003
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParkingBrake", "ParkingBrake\ParkingBrake.csproj", "{8BA7A09C-DC32-44A9-8409-64693ECC4413}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParkingBrake", "Source\ParkingBrake\ParkingBrake.csproj", "{8BA7A09C-DC32-44A9-8409-64693ECC4413}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
