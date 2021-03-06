@@ -70,8 +70,8 @@ namespace ParkingBrake
 		{
             currentBrakeState = false;
 
-            var modules = vessel.FindPartModulesImplementing<ParkingBrakeModule>();
-            var count = modules.Count;
+            System.Collections.Generic.List<ParkingBrakeModule> modules = vessel.FindPartModulesImplementing<ParkingBrakeModule>();
+            int count = modules.Count;
             for (int i = 0; i < count; ++i)
                 modules[i].BrakeActive = false;
 
@@ -107,10 +107,10 @@ namespace ParkingBrake
 
             vessel.permanentGroundContact = true;
 
-            var c = vessel.parts.Count;
+            int c = vessel.parts.Count;
             for (int i = 0; i < c; ++i)
             {
-                var r = vessel.parts[i].Rigidbody;
+                UnityEngine.Rigidbody r = vessel.parts[i].Rigidbody;
                 if (r != null)
                 {
                     r.angularVelocity *= 0;

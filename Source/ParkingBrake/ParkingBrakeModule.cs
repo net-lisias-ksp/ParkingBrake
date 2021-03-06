@@ -77,8 +77,8 @@ namespace ParkingBrake
         /// </summary>
         private void SynchronizeParkingBrakeModules()
         {
-            var modules = vessel.FindPartModulesImplementing<ParkingBrakeModule>();
-            var count = modules.Count;
+			System.Collections.Generic.List<ParkingBrakeModule> modules = vessel.FindPartModulesImplementing<ParkingBrakeModule>();
+			int count = modules.Count;
             for (int i = 0; i < count; ++i)
                 modules[i].BrakeActive = brakeActive;
         }
