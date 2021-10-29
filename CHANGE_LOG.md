@@ -1,4 +1,4 @@
-# Parking Break :: Change Log
+# Parking Break /L Unleashed :: Change Log
 
 * 2021-0306: 0.4.2.1 (LisiasT) for KSP >= 1.3.0
 	+ Backport down to KSP 1.3.0

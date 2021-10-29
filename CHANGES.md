@@ -1,4 +1,4 @@
-# Parking Brake :: Changes
+# Parking Brake /L Unleashed :: Changes
 
 * 2021-0306: 0.4.2.1 (LisiasT) for KSP >= 1.3.0
 	+ Backport down to KSP 1.3.0

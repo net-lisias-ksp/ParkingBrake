@@ -8,7 +8,7 @@
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany(ParkingBrake.LegalMamboJambo.Company)]
 [assembly: AssemblyProduct(ParkingBrake.LegalMamboJambo.Product)]
-[assembly: AssemblyCopyright(ParkingBrake.LegalMamboJambo.Copyight)]
+[assembly: AssemblyCopyright(ParkingBrake.LegalMamboJambo.Copyright)]
 [assembly: AssemblyTrademark(ParkingBrake.LegalMamboJambo.Trademark)]
 [assembly: AssemblyCulture("")]
 
