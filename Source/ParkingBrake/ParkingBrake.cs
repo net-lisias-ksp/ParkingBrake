@@ -11,8 +11,9 @@
 	it will be useful, but WITHOUT ANY WARRANTY; without even the implied
 	warranty of	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
-	You should have received a copy of the GNU General Public License 3.0 with
-	Parking Brake /L Unleashed. If not, see <https://www.gnu.org/licenses/>.
+	You should have received a copy of the GNU General Public License 3.0
+	along with Parking Brake /L Unleashed.
+	If not, see <https://www.gnu.org/licenses/>.
 
 */
 using KSP.Localization;
