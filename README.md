@@ -2,6 +2,8 @@
 
 KSP mod for stopping sliding of a vessel on a slope.
 
+**ParkingBreak /L** is ParkingBreak under Lisias' management.
+
 
 ## In a Hurry
 

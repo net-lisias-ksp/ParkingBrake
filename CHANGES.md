@@ -1,4 +1,4 @@
-# Parking Brake /L Unleashed :: Changes
+# Parking Brake /L :: Changes
 
 * 2021-1029: 0.4.4.1 (LisiasT) for KSP >= 1.3.0
 	+ Recompiling (**hate** this word) to KSPe v2.4
