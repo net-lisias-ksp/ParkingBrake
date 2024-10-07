@@ -18,13 +18,13 @@ echo $FILE
 clean
 cd GameData
 
-zip -r $FILE ./ParkingBreak/* -x ".*"
+zip -r $FILE ./ParkingBrake/* -x ".*"
 
-mkdir -p $pwd/bin/ParkingBreak
-#cat $TARGETDIR/ParkingBreak.cfg | sed 's/curseforge_ready = False/curseforge_ready = True/g' > $pwd/bin/ParkingBreak/KSP-ParkingBreak.cfg
-pushd $pwd/bin
-#zip -u $FILE ParkingBreak/KSP-ParkingBreak.cfg
-popd
+#mkdir -p $pwd/bin/ParkingBrake
+#cat $TARGETDIR/ParkingBrake.cfg | sed 's/curseforge_ready = False/curseforge_ready = True/g' > $pwd/bin/ParkingBrake/KSP-ParkingBrake.cfg
+#pushd $pwd/bin
+#zip -u $FILE ParkingBrake/ParkingBrake.cfg
+#popd
 
 zip -d $FILE __MACOSX "**/.DS_Store" || echo ""
 
