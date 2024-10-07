@@ -14,7 +14,7 @@
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 */
 using System;
-using KSPe.Util.Log;
+//using KSPe.Util.Log;
 using System.Diagnostics;
 
 #if DEBUG
@@ -25,9 +25,25 @@ namespace ParkingBrake
 {
     internal static class Log
     {
-        private static readonly Logger log = Logger.CreateForType<Startup>();
+		//private static readonly Logger log = Logger.CreateForType<Startup>();
+		private static class log
+		{
+			private static void print(string kind, string msg, params object[] @params)
+				=> UnityEngine.Debug.LogFormat("[ParkingBrake] " + (null != kind ? (kind + ":") : "") + msg, @params);
+			private static void printe(string msg, params object[] @params)
+				=> UnityEngine.Debug.LogErrorFormat("[ParkingBrake] ERROR:" + msg, @params);
 
-        internal static void force (string msg, params object [] @params)
+			internal static void force(string msg, object[] @params) => print(null, msg, @params);
+			internal static void info(string msg, object[] @params) => print("INFO", msg, @params);
+			internal static void warn(string msg, object[] @params) => print("WARNING", msg, @params);
+			internal static void detail(string msg, object[] @params) => print("DETAIL", msg, @params);
+			internal static void trace(string msg, object[] @params) => print("TRACE", msg, @params);
+			internal static void trace(string msg) => print("TRACE", msg);
+			internal static void error(Exception e, string msg) => printe(msg, e.ToString());
+			internal static void error(string msg, object[] @params) => printe(msg, @params);
+		}
+
+		internal static void force (string msg, params object [] @params)
         {
             log.force (msg, @params);
         }

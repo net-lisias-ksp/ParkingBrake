@@ -29,6 +29,7 @@ namespace ParkingBrake
         {
             Log.force("Version {0}", Version.Text);
 
+#if false
             try
             {
                 KSPe.Util.Installation.Check<Startup>(typeof(Version));
@@ -38,6 +39,7 @@ namespace ParkingBrake
                 Log.error(e.ToShortMessage());
                 KSPe.Common.Dialogs.ShowStopperAlertBox.Show(e);
             }
+#endif
         }
 	}
 }
