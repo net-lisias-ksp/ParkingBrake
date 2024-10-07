@@ -1,5 +1,5 @@
 ﻿/*
-	This file is part of Parking Brake /L Unleashed
+	This file is part of Parking Brake 
 		© 2018-21 Lisias T : http://lisias.net <support@lisias.net>
 
 	THIS FILE is licensed to you under:
