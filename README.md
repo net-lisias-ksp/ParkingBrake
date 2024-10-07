@@ -1,20 +1,27 @@
-# ParkingBrake /L Unleashed
+# ParkingBrake /L
 
 KSP mod for stopping sliding of a vessel on a slope.
-
-[Unleashed](https://ksp.lisias.net/add-ons-unleashed/) fork by Lisias.
 
 
 ## In a Hurry
 
-* [Latest Release](https://github.com/net-lisias-kspu/ParkingBrake/releases)
-	+ [Binaries](https://github.com/net-lisias-kspu/ParkingBrake/tree/Archive)
-* [Source](https://github.com/net-lisias-kspu/ParkingBrake)
-* Documentation
-	+ [Project's README](https://github.com/net-lisias-kspu/ParkingBrake/blob/master/README.md)
-	+ [Install Instructions](https://github.com/net-lisias-kspu/ParkingBrake/blob/master/INSTALL.md)
+<!--	+ [Homepage](http://ksp.lisias.net/add-ons/ParkingBreak) on L Aerospace -->
+	+ [Project's README](https://github.com/net-lisias-ksp/ParkingBreakblob/master/README.md)
+	+ [Install Instructions](https://github.com/net-lisias-ksp/ParkingBreakblob/master/INSTALL.md)
 	+ [Change Log](./CHANGE_LOG.md)
-	+ [TODO](./TODO.md) list
+	+ [Known Issues](./KNOWN_ISSUES.md)
+	+ [Road Map](https://github.com/net-lisias-ksp/ParkingBreakblob/master/ROAD_MAP.md)
+* Official Distribution Sites:
+<!--	+ [CurseForge](https://kerbal.curseforge.com/projects/ParkingBreak) -->
+<!--	+ [SpaceDock](https://spacedock.info/mod/127/ParkingBreak) -->
+	+ [Latest Release](https://github.com/net-lisias-ksp/ParkingBreakreleases)
+		- [Archive](https://github.com/net-lisias-ksp/ParkingBreaktree/Archive)
+* Support
+	+ [Homepage](http://ksp.lisias.net/add-ons/ParkingBreakSupport/) on L Aerospace
+<!--	+ [Forum](https://forum.kerbalspaceprogram.com/index.php?/topic/*-*/) -->
+<!--	+ [Discussions on Github](https://github.com/net-lisias-ksp/ParkingBreakdiscussions/categories/support) -->
+* [Source](https://github.com/net-lisias-ksp/ParkingBreak)
+	+ [Issue Tracker](https://github.com/net-lisias-ksp/ParkingBreak/issues)
 
 
 ## Description
@@ -38,13 +45,15 @@ This work is licensed under the [GPL 3.0](https://www.gnu.org/licenses/gpl-3.0.t
 + You are free to:
 	- Use : unpack and use the material in any computer or device
 	- Redistribute : redistribute the original package in any medium
-	- Adapt : Reuse, modify or incorporate source code into your works (and redistribute it!) 
+	- Adapt : Reuse, modify or incorporate source code into your works (and redistribute it!)
 + Under the following terms:
 	- You retain any copyright notices
-	- You recognize and respect any trademarks
+	- You recognise and respect any trademarks
 	- You don't impersonate the authors, neither redistribute a derivative that could be misrepresented as theirs.
 	- You credit the author and republish the copyright notices on your works where the code is used.
 	- You relicense (and fully comply) your works using GPL 3.0
+		- Please note that upgrading the license to any future license version  **IS NOT ALLOWED** for this work, as the author **DID NOT**
+ added the "or (at your option) any later version" on the license
 	- You don't mix your work with GPL incompatible works.
 
 Please note the copyrights and trademarks in [NOTICE](./NOTICE).

@@ -1,9 +1,9 @@
 {
-	"NAME"		: "Parking Brake /L Unleashed",
-	"URL"		: "https://raw.githubusercontent.com/net-lisias-kspu/ParkingBrake/master/ParkingBrake.version",
-	"DOWNLOAD"	: "https://github.com/net-lisias-kspu/ParkingBrake/releases",
-	"CHANGE_LOG"	: "https://raw.githubusercontent.com/net-lisias-kspu/ParkingBrake/master/CHANGE_LOG.md",
-	"CHANGE_LOG_URL": "https://raw.githubusercontent.com/net-lisias-kspu/ParkingBrake/master/CHANGES.md",
+	"NAME"		: "Parking Brake /L",
+	"URL"		: "https://raw.githubusercontent.com/net-lisias-ksp/ParkingBrake/master/ParkingBrake.version",
+	"DOWNLOAD"	: "https://github.com/net-lisias-ksp/ParkingBrake/releases",
+	"CHANGE_LOG"	: "https://raw.githubusercontent.com/net-lisias-ksp/ParkingBrake/master/CHANGE_LOG.md",
+	"CHANGE_LOG_URL": "https://raw.githubusercontent.com/net-lisias-ksp/ParkingBrake/master/CHANGES.md",
 	"VERSION":{
 		"MAJOR":0,
 		"MINOR":4,

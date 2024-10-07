@@ -24,6 +24,6 @@ namespace ParkingBrake
 		public const string Company = "L Aerospace KSP Division";
 		public const string Copyright = "© 2021 LisiasT";
 		public const string Product = "Parking Brake";
-		public const string Trademark = "Parking Brake™ by Maja; /L Unleashed™ by LisiasT";
+		public const string Trademark = "Parking Brake™ by Maja, LisiasT; /L™ by LisiasT";
 	}
 }
