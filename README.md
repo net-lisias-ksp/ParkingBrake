@@ -7,6 +7,7 @@ KSP mod for stopping sliding of a vessel on a slope.
 
 ## In a Hurry
 
+* Documentation
 <!--	+ [Homepage](http://ksp.lisias.net/add-ons/ParkingBreak) on L Aerospace -->
 	+ [Project's README](https://github.com/net-lisias-ksp/ParkingBreakblob/master/README.md)
 	+ [Install Instructions](https://github.com/net-lisias-ksp/ParkingBreakblob/master/INSTALL.md)
