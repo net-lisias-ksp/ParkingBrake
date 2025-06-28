@@ -68,22 +68,51 @@ namespace ParkingBrake
 				return;
 			}
 
-			if (!vessel.Landed)
+			switch (this.vessel.vesselType)
 			{
-				this.currentBrakeState = false;
-				ScreenMessages.PostScreenMessage(Localizer.Format("#LOC_PB_NotLanded")).color = Color.red;
-				return;
-			}
+				case VesselType.Base:
+					{
+						vessel.ActionGroups.SetGroup(KSPActionGroup.Brakes, true);
+						ScreenMessages.PostScreenMessage(Localizer.Format("#LOC_PB_Engaged"));
+					}
+					break;
 
-			if (vessel.speed > 0.25)
-			{
-				this.currentBrakeState = false;
-				ScreenMessages.PostScreenMessage(Localizer.Format("#LOC_PB_Moving")).color = Color.red;
-				return;
-			}
+				case VesselType.EVA:
+				case VesselType.Rover:
+					{
+						if (vessel.speed > 0.25)
+						{
+							this.currentBrakeState = false;
+							ScreenMessages.PostScreenMessage(Localizer.Format("#LOC_PB_Moving")).color = Color.red;
+							return;
+						}
 
-			vessel.ActionGroups.SetGroup(KSPActionGroup.Brakes, true);
-			ScreenMessages.PostScreenMessage(Localizer.Format("#LOC_PB_Engaged"));
+						vessel.ActionGroups.SetGroup(KSPActionGroup.Brakes, true);
+						ScreenMessages.PostScreenMessage(Localizer.Format("#LOC_PB_Engaged"));
+					}
+					break;
+
+				default:
+					{
+						if (!vessel.Landed)
+						{
+							this.currentBrakeState = false;
+							ScreenMessages.PostScreenMessage(Localizer.Format("#LOC_PB_NotLanded")).color = Color.red;
+							return;
+						}
+
+						if (vessel.speed > 0.25)
+						{
+							this.currentBrakeState = false;
+							ScreenMessages.PostScreenMessage(Localizer.Format("#LOC_PB_Moving")).color = Color.red;
+							return;
+						}
+
+						vessel.ActionGroups.SetGroup(KSPActionGroup.Brakes, true);
+						ScreenMessages.PostScreenMessage(Localizer.Format("#LOC_PB_Engaged"));
+					}
+					break;
+			}
 		}
 
 		/// <summary>
@@ -135,16 +164,44 @@ namespace ParkingBrake
         public void FixedUpdate()
         {
 			if (!HighLogic.LoadedSceneIsFlight) return;
-			bool isNormalBrakesEngaged = vessel.ActionGroups[KSPActionGroup.Brakes];
-			if (currentBrakeState)
+            bool isNormalBrakesEngaged = vessel.ActionGroups[KSPActionGroup.Brakes];
+
+			switch (this.vessel.vesselType)
 			{
-				if (!isNormalBrakesEngaged) this.DisengageParkingBrake();
-				if (!vessel.Landed)
-				{
-					// Brake active, disengage
-					DisengageParkingBrake();
-				}
+				case VesselType.Base:
+					{
+						if (this.currentBrakeState && !isNormalBrakesEngaged)
+						{
+							Vessel.ActionGroups.SetGroup(KSPActionGroup.Brakes, true);
+							this.EngageParkingBrake(true);
+							break;
+						}
+						if (!this.currentBrakeState && !isNormalBrakesEngaged) this.DisengageParkingBrake();
+					}
+					break;
+
+				case VesselType.EVA:
+				case VesselType.Rover:
+					{
+						if (!currentBrakeState) break;
+						if (!isNormalBrakesEngaged) this.DisengageParkingBrake();
+					}
+					break;
+
+				default:
+					{
+						if (!currentBrakeState) break;
+						if (!isNormalBrakesEngaged) this.DisengageParkingBrake();
+						if (!vessel.Landed)
+						{
+							// Brake active, disengage
+							DisengageParkingBrake();
+							break;
+						}
+					}
+					break;
 			}
+
 			if (!this.currentBrakeState) return;
 
             vessel.permanentGroundContact = true;
