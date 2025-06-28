@@ -8,21 +8,19 @@ KSP mod for stopping sliding of a vessel on a slope.
 ## In a Hurry
 
 * Documentation
-<!--	+ [Homepage](http://ksp.lisias.net/add-ons/ParkingBreak) on L Aerospace -->
+	+ [Homepage](http://ksp.lisias.net/add-ons/ParkingBreak) on L Aerospace
 	+ [Project's README](https://github.com/net-lisias-ksp/ParkingBreakblob/master/README.md)
 	+ [Install Instructions](https://github.com/net-lisias-ksp/ParkingBreakblob/master/INSTALL.md)
 	+ [Change Log](./CHANGE_LOG.md)
-	+ [Known Issues](./KNOWN_ISSUES.md)
-	+ [Road Map](https://github.com/net-lisias-ksp/ParkingBreakblob/master/ROAD_MAP.md)
 * Official Distribution Sites:
-<!--	+ [CurseForge](https://kerbal.curseforge.com/projects/ParkingBreak) -->
-<!--	+ [SpaceDock](https://spacedock.info/mod/127/ParkingBreak) -->
+		+ <!-- [CurseForge](https://kerbal.curseforge.com/projects/ParkingBreak) -->
+		+ <!-- [SpaceDock](https://spacedock.info/mod/127/ParkingBreak) -->
 	+ [Latest Release](https://github.com/net-lisias-ksp/ParkingBreakreleases)
 		- [Archive](https://github.com/net-lisias-ksp/ParkingBreaktree/Archive)
 * Support
 	+ [Homepage](http://ksp.lisias.net/add-ons/ParkingBreakSupport/) on L Aerospace
-<!--	+ [Forum](https://forum.kerbalspaceprogram.com/index.php?/topic/*-*/) -->
-<!--	+ [Discussions on Github](https://github.com/net-lisias-ksp/ParkingBreakdiscussions/categories/support) -->
+	+ [Forum](https://forum.kerbalspaceprogram.com/index.php?/topic/226113-*/)
+	+ [Discussions on Github](https://github.com/net-lisias-ksp/ParkingBrake/discussions/categories/support)
 * [Source](https://github.com/net-lisias-ksp/ParkingBreak)
 	+ [Issue Tracker](https://github.com/net-lisias-ksp/ParkingBreak/issues)
 
@@ -64,7 +62,7 @@ Please note the copyrights and trademarks in [NOTICE](./NOTICE).
 
 ## UPSTREAM
 
-* [Maja](https://forum.kerbalspaceprogram.com/index.php?/profile/168379-maja/) ROOT
+* [Maja](https://forum.kerbalspaceprogram.com/index.php?/profile/168379-maja/) PREVIOUS MAINTAINER
 	+ [Forum](https://forum.kerbalspaceprogram.com/index.php?/topic/180083-*)
 	+ [SpaceDock](https://spacedock.info/mod/2018/Parking%20Brake)
 	+ [Github](https://github.com/jarosm/KSP-ParkingBrake)
