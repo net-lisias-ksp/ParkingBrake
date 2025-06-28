@@ -1,7 +1,7 @@
 ﻿/*
 	This file is part of Parking Brake /L
-		© 2024 LisiasT : http://lisias.net <support@lisias.net>
-		© 2018-21 Maja
+		© 2021-2025 LisiasT : http://lisias.net <support@lisias.net>
+		© 2018-2021 Maja
 
 	Parking Brake  is licensed as follows:
 
@@ -22,7 +22,7 @@ namespace ParkingBrake
 	public static class LegalMamboJambo
 	{
 		public const string Company = "L Aerospace KSP Division";
-		public const string Copyright = "©2021-2024 LisiasT";
+		public const string Copyright = "©2024-2025 LisiasT";
 		public const string Product = "Parking Brake";
 		public const string Trademark = "Parking Brake™ by Maja, LisiasT; /L™ by LisiasT";
 	}
