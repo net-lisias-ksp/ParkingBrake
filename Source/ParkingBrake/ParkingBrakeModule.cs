@@ -23,21 +23,12 @@ namespace ParkingBrake
 {
     public class ParkingBrakeModule : PartModule
     {
-        /// <summary>
-        /// Parking brake is active
-        /// </summary>
-        [KSPField(isPersistant = true)]
-        private bool brakeActive = false;
+		private ParkingBrake vesselModule;
+
         public bool BrakeActive
         {
-            get { return brakeActive; }
-            set
-            {
-                brakeActive = value;
-                Events["ToggleParkingBrake"].guiName = (!brakeActive ? Localizer.Format("#LOC_PB_ContextMenu_Engage") : Localizer.Format("#LOC_PB_ContextMenu_Disengage"));
-            }
+            get { return this.vesselModule.BrakeActive; }
         }
-
 
         /// <summary>
         /// Module start
@@ -45,9 +36,10 @@ namespace ParkingBrake
         /// <param name="state">Start state</param>
         public override void OnStart(PartModule.StartState state)
         {
+			this.vesselModule = getMyVesselModule();
+
             if (HighLogic.LoadedSceneIsFlight)
             {
-                SynchronizeParkingBrakeModules();
                 ParkingBrake.onParkingBrake.Fire(this, false);
             }
         }
@@ -59,48 +51,17 @@ namespace ParkingBrake
         [KSPEvent(guiName = "Engage parking brake", guiActive = true, externalToEVAOnly = true, guiActiveEditor = false, active = true, guiActiveUnfocused = true, unfocusedRange = 3.0f)]
         public void ToggleParkingBrake()
         {
-            brakeActive = !brakeActive;
-
-            if (brakeActive)
-            {
-                if (!vessel.Landed)
-                {
-                    brakeActive = false;
-                    ScreenMessages.PostScreenMessage(Localizer.Format("#LOC_PB_NotLanded")).color = Color.red;
-                    return;
-                }
-
-                if (vessel.speed > 0.25)
-                {
-                    brakeActive = false;
-                    ScreenMessages.PostScreenMessage(Localizer.Format("#LOC_PB_Moving")).color = Color.red;
-                    return;
-                }
-
-                vessel.ActionGroups.SetGroup(KSPActionGroup.Brakes, true);
-                ScreenMessages.PostScreenMessage(Localizer.Format("#LOC_PB_Engaged"));
-            }
-            else
-            {
-                ScreenMessages.PostScreenMessage(Localizer.Format("#LOC_PB_Disengaged"));
-            }
-
-            ParkingBrake.onParkingBrake.Fire(this, true);
-            SynchronizeParkingBrakeModules();
+            this.vesselModule.ToggleParkingBrake();
+            Events["ToggleParkingBrake"].guiName = (!this.vesselModule.BrakeActive ? Localizer.Format("#LOC_PB_ContextMenu_Engage") : Localizer.Format("#LOC_PB_ContextMenu_Disengage"));
         }
 
+		private ParkingBrake getMyVesselModule()
+		{
+			int count = this.vessel.vesselModules.Count;
+			for (int i = 0; i < count; ++i) if (this.vessel.vesselModules[i] is ParkingBrake)
+				return this.vessel.vesselModules[i] as ParkingBrake;
+			return null; // In Kraken we Trust!!!
+		}
 
-        /// <summary>
-        /// Synchronize brake state for all modules
-        /// </summary>
-        private void SynchronizeParkingBrakeModules()
-        {
-			System.Collections.Generic.List<ParkingBrakeModule> modules = vessel.FindPartModulesImplementing<ParkingBrakeModule>();
-			int count = modules.Count;
-            for (int i = 0; i < count; ++i)
-                modules[i].BrakeActive = brakeActive;
-        }
-
-    }
-
+	}
 }

@@ -16,6 +16,7 @@
 	If not, see <https://www.gnu.org/licenses/>.
 
 */
+using UnityEngine;
 using KSP.Localization;
 
 namespace ParkingBrake
@@ -30,10 +31,15 @@ namespace ParkingBrake
         private double alt = 0;
         [KSPField(isPersistant = true)]
         private bool positionSet = false;
-
-
-        public static EventData<ParkingBrakeModule, bool> onParkingBrake = new EventData<ParkingBrakeModule, bool>("onParkingBrake");
+        [KSPField(isPersistant = true)]
         private bool currentBrakeState; // Current state of the brake
+
+		public bool BrakeActive
+		{
+			get { return this.currentBrakeState; }
+		}
+
+		public static EventData<ParkingBrakeModule, bool> onParkingBrake = new EventData<ParkingBrakeModule, bool>("onParkingBrake");
 
 
         /// <summary>
@@ -53,13 +59,39 @@ namespace ParkingBrake
             onParkingBrake.Remove(EngageParkingBrake);
         }
 
+		public void ToggleParkingBrake()
+		{
+			this.currentBrakeState = !this.currentBrakeState;
+			if (!this.currentBrakeState)
+			{
+				ScreenMessages.PostScreenMessage(Localizer.Format("#LOC_PB_Disengaged"));
+				return;
+			}
 
-        /// <summary>
-        /// Toggle brake
-        /// </summary>
-        /// <param name="v"></param>
-        /// <param name="brakeState"></param>
-        private void EngageParkingBrake(ParkingBrakeModule m, bool setPosition)
+			if (!vessel.Landed)
+			{
+				this.currentBrakeState = false;
+				ScreenMessages.PostScreenMessage(Localizer.Format("#LOC_PB_NotLanded")).color = Color.red;
+				return;
+			}
+
+			if (vessel.speed > 0.25)
+			{
+				this.currentBrakeState = false;
+				ScreenMessages.PostScreenMessage(Localizer.Format("#LOC_PB_Moving")).color = Color.red;
+				return;
+			}
+
+			vessel.ActionGroups.SetGroup(KSPActionGroup.Brakes, true);
+			ScreenMessages.PostScreenMessage(Localizer.Format("#LOC_PB_Engaged"));
+		}
+
+		/// <summary>
+		/// Toggle brake
+		/// </summary>
+		/// <param name="v"></param>
+		/// <param name="brakeState"></param>
+		private void EngageParkingBrake(ParkingBrakeModule m, bool setPosition)
         {
             if (m.vessel != vessel)
                 return;
@@ -67,17 +99,22 @@ namespace ParkingBrake
             if (m.BrakeActive == currentBrakeState)
                 return;
 
+            this.EngageParkingBrake(setPosition);
+        }
+
+        private void EngageParkingBrake(bool setPosition)
+        {
             if (setPosition)
             {
                 lat = vessel.latitude;
                 lon = vessel.longitude;
                 alt = vessel.altitude;
-                positionSet = true;
+                this.positionSet = true;
             }
             else
-                positionSet = false;
+                this.positionSet = false;
 
-            currentBrakeState = m.BrakeActive;
+            this.currentBrakeState = true;
         }
 
 
@@ -85,14 +122,8 @@ namespace ParkingBrake
         /// Disengage parking brake by controller
         /// </summary>
         private void DisengageParkingBrake()
-		{
+        {
             currentBrakeState = false;
-
-            System.Collections.Generic.List<ParkingBrakeModule> modules = vessel.FindPartModulesImplementing<ParkingBrakeModule>();
-            int count = modules.Count;
-            for (int i = 0; i < count; ++i)
-                modules[i].BrakeActive = false;
-
             ScreenMessages.PostScreenMessage(Localizer.Format("#LOC_PB_Disengaged"));
         }
 
@@ -103,25 +134,18 @@ namespace ParkingBrake
         /// </summary>
         public void FixedUpdate()
         {
-            if (!HighLogic.LoadedSceneIsFlight)
-                return;
-
-            if (!vessel.Landed)
-            {
-                if (currentBrakeState) // Brake active, disengage
-                    DisengageParkingBrake();
-                return;
-            }
-
-            if (!currentBrakeState)
-                return;
-
-            // Brakes switched off
-            if (!vessel.ActionGroups[KSPActionGroup.Brakes])
+			if (!HighLogic.LoadedSceneIsFlight) return;
+			bool isNormalBrakesEngaged = vessel.ActionGroups[KSPActionGroup.Brakes];
+			if (currentBrakeState)
 			{
-                DisengageParkingBrake();
-                return;
-            }
+				if (!isNormalBrakesEngaged) this.DisengageParkingBrake();
+				if (!vessel.Landed)
+				{
+					// Brake active, disengage
+					DisengageParkingBrake();
+				}
+			}
+			if (!this.currentBrakeState) return;
 
             vessel.permanentGroundContact = true;
 
