@@ -1,10 +1,12 @@
 # Parking Break :: Change Log
 
+* 2025-1101: 0.5.0.2 (LisiasT) for KSP >= 1.3
+	+ Promotes 0.5.0.1 to RELEASE
 * 2025-0628: 0.5.0.1 (LisiasT) for KSP >= 1.3 BETA
-	+ Specialized behaviour for each `VesselType`:
+	+ Specialised behaviour for each `VesselType`:
 		- Base
-			- Unconditional Auto Engage in all circunstances if the Parking Brake is enabled
-			- Never disengage unless the Normal Brakes is deactivated
+			- Unconditional Auto Engage in all circumstances if the Parking Brake is enabled
+			- Never disengages unless the Normal Brakes is deactivated
 			- Convenient for... Bases! :)
 		- EVA / ROVER:
 			- Only engages if the vessel is pretty slow or plain halted.

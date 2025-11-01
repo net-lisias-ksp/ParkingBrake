@@ -25,5 +25,5 @@ deploy_assets() {
 }
 
 scp -i $SSH_ID ./GameData/$PACKAGE/$VERSIONFILE $SITE:/$TARGET_CONTENT_PATH
-deploy_assets ./PR_material ./PR_material/$PACKAGE
+#deploy_assets ./PR_material ./PR_material/$PACKAGE
 deploy_md README.md $PACKAGE.md
