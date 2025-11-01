@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-# not needed for while
-exit 0
-
 # see http://redsymbol.net/articles/unofficial-bash-strict-mode/
 set -euo pipefail
 IFS=$'\n\t'
