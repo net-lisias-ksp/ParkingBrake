@@ -1,5 +1,7 @@
 # Parking Break :: Change Log
 
+* 2025-1112: 0.5.0.3 (LisiasT) for KSP >= 1.3
+	+ Fixes a borkage on the project's dependencies configuration.
 * 2025-1101: 0.5.0.2 (LisiasT) for KSP >= 1.3
 	+ Promotes 0.5.0.1 to RELEASE
 * 2025-0628: 0.5.0.1 (LisiasT) for KSP >= 1.3 BETA
