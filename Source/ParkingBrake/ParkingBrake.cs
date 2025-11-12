@@ -47,6 +47,9 @@ namespace ParkingBrake
         /// </summary>
         public new void Start()
         {
+			this.enabled = HighLogic.LoadedSceneIsFlight;
+			if (!this.enabled) return;
+
             onParkingBrake.Add(EngageParkingBrake);
         }
 
@@ -163,7 +166,6 @@ namespace ParkingBrake
         /// </summary>
         public void FixedUpdate()
         {
-			if (!HighLogic.LoadedSceneIsFlight) return;
             bool isNormalBrakesEngaged = vessel.ActionGroups[KSPActionGroup.Brakes];
 
 			switch (this.vessel.vesselType)

@@ -36,12 +36,11 @@ namespace ParkingBrake
         /// <param name="state">Start state</param>
         public override void OnStart(PartModule.StartState state)
         {
-			this.vesselModule = getMyVesselModule();
+			this.enabled = HighLogic.LoadedSceneIsFlight;
+			if (!this.enabled) return;
 
-            if (HighLogic.LoadedSceneIsFlight)
-            {
-                ParkingBrake.onParkingBrake.Fire(this, false);
-            }
+			this.vesselModule = getMyVesselModule();
+			ParkingBrake.onParkingBrake.Fire(this, false);
         }
 
 
