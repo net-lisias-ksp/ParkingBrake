@@ -40,7 +40,8 @@ namespace ParkingBrake
 			if (!this.enabled) return;
 
 			this.vesselModule = getMyVesselModule();
-			ParkingBrake.onParkingBrake.Fire(this, false);
+			ParkingBrake.onParkingBrake.Fire(this, this.vesselModule.BrakeActive);
+			this.updatePaw();
         }
 
 
@@ -51,8 +52,13 @@ namespace ParkingBrake
         public void ToggleParkingBrake()
         {
             this.vesselModule.ToggleParkingBrake();
-            Events["ToggleParkingBrake"].guiName = (!this.vesselModule.BrakeActive ? Localizer.Format("#LOC_PB_ContextMenu_Engage") : Localizer.Format("#LOC_PB_ContextMenu_Disengage"));
+			this.updatePaw();
         }
+
+		private void updatePaw()
+		{
+			Events["ToggleParkingBrake"].guiName = (!this.vesselModule.BrakeActive ? Localizer.Format("#LOC_PB_ContextMenu_Engage") : Localizer.Format("#LOC_PB_ContextMenu_Disengage"));
+		}
 
 		private ParkingBrake getMyVesselModule()
 		{
