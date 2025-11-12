@@ -1,7 +1,10 @@
 # Parking Break :: Change Log
 
-* 2025-1112: 0.5.0.3 (LisiasT) for KSP >= 1.3
+* 2025-1112: 0.5.0.4 (LisiasT) for KSP >= 1.3
 	+ Fixes a borkage on the project's dependencies configuration.
+	+ Fixes a mishap trying to run the PB modules while on Editor (where it has absolutely no business). Thanks to [pipai](https://forum.kerbalspaceprogram.com/profile/210870-pipai/) for the tip!
+* 2025-1112: 0.5.0.3 (LisiasT) for KSP >= 1.3
+	+ ***DITCHED*** because I made a new release on the same day.
 * 2025-1101: 0.5.0.2 (LisiasT) for KSP >= 1.3
 	+ Promotes 0.5.0.1 to RELEASE
 * 2025-0628: 0.5.0.1 (LisiasT) for KSP >= 1.3 BETA
