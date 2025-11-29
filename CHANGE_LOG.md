@@ -1,5 +1,9 @@
 # Parking Break :: Change Log
 
+* 2025-1129: 0.5.0.5 (LisiasT) for KSP >= 1.3
+	+ Works around a Unity's idiosyncrasy. (damn)
+	+ Closes issues:
+		- [#3](https://github.com/net-lisias-ksp/ParkingBrake/issues/3) "Parking brake disengaged" message repeated ad nauseaum
 * 2025-1112: 0.5.0.4 (LisiasT) for KSP >= 1.3
 	+ Fixes a borkage on the project's dependencies configuration.
 	+ Fixes a mishap trying to run the PB modules while on Editor (where it has absolutely no business). Thanks to [pipai](https://forum.kerbalspaceprogram.com/profile/210870-pipai/) for the tip!
