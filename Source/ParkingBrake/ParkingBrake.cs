@@ -166,6 +166,8 @@ namespace ParkingBrake
         /// </summary>
         public void FixedUpdate()
         {
+			if (!this.enabled) return;
+
             bool isNormalBrakesEngaged = vessel.ActionGroups[KSPActionGroup.Brakes];
 
 			switch (this.vessel.vesselType)
