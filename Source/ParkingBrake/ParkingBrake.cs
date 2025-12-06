@@ -45,8 +45,9 @@ namespace ParkingBrake
         /// <summary>
         /// Module start
         /// </summary>
-        public new void Start()
+		protected override void OnStart()
         {
+			base.OnStart();
 			this.enabled = HighLogic.LoadedSceneIsFlight;
 			if (!this.enabled) return;
 
