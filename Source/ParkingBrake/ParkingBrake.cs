@@ -195,8 +195,7 @@ namespace ParkingBrake
 				default:
 					{
 						if (!currentBrakeState) break;
-						if (!isNormalBrakesEngaged) this.DisengageParkingBrake();
-						if (!vessel.Landed)
+						if (!isNormalBrakesEngaged || !vessel.Landed)
 						{
 							// Brake active, disengage
 							DisengageParkingBrake();
