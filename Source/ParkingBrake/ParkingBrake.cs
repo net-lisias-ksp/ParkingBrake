@@ -49,19 +49,30 @@ namespace ParkingBrake
         {
 			base.OnStart();
 			this.enabled = HighLogic.LoadedSceneIsFlight;
-			if (!this.enabled) return;
-
             onParkingBrake.Add(EngageParkingBrake);
+			GameEvents.onGameSceneLoadRequested.Add(this.OnGameSceneLoadRequested);
         }
-
 
         /// <summary>
         /// Module destroy
         /// </summary>
         public void OnDestroy()
         {
+			GameEvents.onGameSceneLoadRequested.Remove(this.OnGameSceneLoadRequested);
             onParkingBrake.Remove(EngageParkingBrake);
         }
+
+		public override void OnGoOnRails()
+		{
+			base.OnGoOnRails();
+			this.enabled = false;
+		}
+
+		public override void OnGoOffRails()
+		{
+			base.OnGoOffRails();
+			this.enabled = HighLogic.LoadedSceneIsFlight;
+		}
 
 		public void ToggleParkingBrake()
 		{
@@ -160,6 +171,7 @@ namespace ParkingBrake
             ScreenMessages.PostScreenMessage(Localizer.Format("#LOC_PB_Disengaged"));
         }
 
+		private void OnGameSceneLoadRequested(GameScenes target) => this.enabled = target.Equals(GameScenes.FLIGHT);
 
         /// <summary>
         /// Stabilize vessel
