@@ -35,12 +35,23 @@ namespace ParkingBrake
         [KSPField(isPersistant = true)]
         private bool currentBrakeState; // Current state of the brake
 
+		// That's the history: Somehow, a 3rd party that I didn't bored to identify decided it would be a good idea to brute-force
+		// their way on enabling this `VesselModule` on every single `FixedUpdate`. This **royally** screwed me up, because I deactivate
+		// this `VesselModule` when there's nothing to do, simplifying the code and saving some fscking CPU cycles.
+		//
+		// So this freaking gambiarra had to be cooked in order to survive that less then insightful developer that decidec they knwow
+		// better and brute-force whatever they had in their less then skilled minds on everybody's else modules.
+		//
+		// See https://github.com/net-lisias-ksp/ParkingBrake/issues/3
+		private bool internalEnabled = false;
+
 		private delegate void FixedUpdateDelegate(bool isNormalBrakesEngaged);
 		private readonly FixedUpdateDelegate[] fixedUpdateHandler;
 
 		public ParkingBrake() : base()
 		{
 			this.fixedUpdateHandler = new FixedUpdateDelegate[] {this.FixedUpdateWhenDeactivated, this.FixedUpdateWhenActivated};
+			this.internalEnabled = this.enabled;
 		}
 
 		public bool BrakeActive
@@ -71,7 +82,7 @@ namespace ParkingBrake
 		protected override void OnStart()
         {
 			base.OnStart();
-			this.enabled = HighLogic.LoadedSceneIsFlight && this.vessel.loaded;
+			this.internalEnabled = this.enabled = HighLogic.LoadedSceneIsFlight && this.vessel.loaded;
             onParkingBrake.Add(EngageParkingBrake);
 			GameEvents.onGameSceneLoadRequested.Add(this.OnGameSceneLoadRequested);
         }
@@ -88,13 +99,13 @@ namespace ParkingBrake
 		public override void OnGoOnRails()
 		{
 			base.OnGoOnRails();
-			this.enabled = false;
+			this.internalEnabled = this.enabled = false;
 		}
 
 		public override void OnGoOffRails()
 		{
 			base.OnGoOffRails();
-			this.enabled = HighLogic.LoadedSceneIsFlight;
+			this.internalEnabled = this.enabled = HighLogic.LoadedSceneIsFlight;
 		}
 
 		public void ToggleParkingBrake()
@@ -194,7 +205,7 @@ namespace ParkingBrake
             ScreenMessages.PostScreenMessage(Localizer.Format("#LOC_PB_Disengaged"));
         }
 
-		private void OnGameSceneLoadRequested(GameScenes target) => this.enabled = target.Equals(GameScenes.FLIGHT);
+		private void OnGameSceneLoadRequested(GameScenes target) => this.internalEnabled = this.enabled = target.Equals(GameScenes.FLIGHT);
 
         /// <summary>
         /// Stabilize vessel
@@ -202,6 +213,7 @@ namespace ParkingBrake
         /// </summary>
         public void FixedUpdate()
         {
+			if (this.enabled != this.internalEnabled) this.enabled = this.internalEnabled;
 			if (!this.enabled) return;
 
 			bool isNormalBrakesEngaged = vessel.ActionGroups[KSPActionGroup.Brakes];
