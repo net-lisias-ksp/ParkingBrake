@@ -52,10 +52,9 @@ namespace ParkingBrake
         public void ToggleParkingBrake()
         {
             this.vesselModule.ToggleParkingBrake();
-			this.updatePaw();
         }
 
-		private void updatePaw()
+		internal void updatePaw()
 		{
 			Events["ToggleParkingBrake"].guiName = (!this.vesselModule.BrakeActive ? Localizer.Format("#LOC_PB_ContextMenu_Engage") : Localizer.Format("#LOC_PB_ContextMenu_Disengage"));
 		}

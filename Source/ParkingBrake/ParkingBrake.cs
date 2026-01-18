@@ -18,6 +18,7 @@
 */
 using UnityEngine;
 using KSP.Localization;
+using System;
 
 namespace ParkingBrake
 {
@@ -44,7 +45,21 @@ namespace ParkingBrake
 
 		public bool BrakeActive
 		{
+			set
+			{
+				if (value == this.currentBrakeState) return;
+				this.currentBrakeState = value;
+				this.updatePaw();
+			}
 			get { return this.currentBrakeState; }
+		}
+
+		private void updatePaw()
+		{
+			System.Collections.Generic.List<ParkingBrakeModule> listener = this.vessel.FindPartModulesImplementing<ParkingBrakeModule>();
+			int count = listener.Count;
+			for (int i = 0; i < count; ++i)
+				listener[i].updatePaw();
 		}
 
 		public static EventData<ParkingBrakeModule, bool> onParkingBrake = new EventData<ParkingBrakeModule, bool>("onParkingBrake");
@@ -84,8 +99,8 @@ namespace ParkingBrake
 
 		public void ToggleParkingBrake()
 		{
-			this.currentBrakeState = !this.currentBrakeState;
-			if (!this.currentBrakeState)
+			this.BrakeActive = !this.BrakeActive;
+			if (!this.BrakeActive)
 			{
 				ScreenMessages.PostScreenMessage(Localizer.Format("#LOC_PB_Disengaged"));
 				return;
@@ -105,7 +120,7 @@ namespace ParkingBrake
 					{
 						if (vessel.speed > 0.25)
 						{
-							this.currentBrakeState = false;
+							this.BrakeActive = false;
 							ScreenMessages.PostScreenMessage(Localizer.Format("#LOC_PB_Moving")).color = Color.red;
 							return;
 						}
@@ -119,14 +134,14 @@ namespace ParkingBrake
 					{
 						if (!vessel.Landed)
 						{
-							this.currentBrakeState = false;
+							this.BrakeActive = false;
 							ScreenMessages.PostScreenMessage(Localizer.Format("#LOC_PB_NotLanded")).color = Color.red;
 							return;
 						}
 
 						if (vessel.speed > 0.25)
 						{
-							this.currentBrakeState = false;
+							this.BrakeActive = false;
 							ScreenMessages.PostScreenMessage(Localizer.Format("#LOC_PB_Moving")).color = Color.red;
 							return;
 						}
@@ -148,7 +163,7 @@ namespace ParkingBrake
             if (m.vessel != vessel)
                 return;
 
-            if (m.BrakeActive == currentBrakeState)
+			if (m.BrakeActive == this.BrakeActive)
                 return;
 
             this.EngageParkingBrake(setPosition);
@@ -166,7 +181,7 @@ namespace ParkingBrake
             else
                 this.positionSet = false;
 
-            this.currentBrakeState = true;
+            this.BrakeActive = true;
         }
 
 
@@ -175,7 +190,7 @@ namespace ParkingBrake
         /// </summary>
         private void DisengageParkingBrake()
         {
-            currentBrakeState = false;
+            this.BrakeActive = false;
             ScreenMessages.PostScreenMessage(Localizer.Format("#LOC_PB_Disengaged"));
         }
 
