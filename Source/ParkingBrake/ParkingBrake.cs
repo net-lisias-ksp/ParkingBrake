@@ -180,6 +180,7 @@ namespace ParkingBrake
         public void FixedUpdate()
         {
 			if (!this.enabled) return;
+			Log.dbg("FixedUpdate's enabled is {0}", this.enabled);
 
             bool isNormalBrakesEngaged = vessel.ActionGroups[KSPActionGroup.Brakes];
 
@@ -193,7 +194,11 @@ namespace ParkingBrake
 							this.EngageParkingBrake(true);
 							break;
 						}
-						if (!this.currentBrakeState && !isNormalBrakesEngaged) this.DisengageParkingBrake();
+						if (!this.currentBrakeState && !isNormalBrakesEngaged)
+						{
+							Log.dbg("#LOC_PB_Disengaged base {0} {1}", this.currentBrakeState, isNormalBrakesEngaged);
+							this.DisengageParkingBrake();
+						}
 					}
 					break;
 
@@ -201,7 +206,11 @@ namespace ParkingBrake
 				case VesselType.Rover:
 					{
 						if (!currentBrakeState) break;
-						if (!isNormalBrakesEngaged) this.DisengageParkingBrake();
+						if (!isNormalBrakesEngaged)
+						{ 
+							Log.dbg("#LOC_PB_Disengaged EVA/ROVER {0} {1}", this.currentBrakeState, isNormalBrakesEngaged);
+							this.DisengageParkingBrake();
+						}
 					}
 					break;
 
@@ -212,6 +221,7 @@ namespace ParkingBrake
 						{
 							// Brake active, disengage
 							DisengageParkingBrake();
+							Log.dbg("#LOC_PB_Disengaged default {0} {1}", this.currentBrakeState, isNormalBrakesEngaged);
 							break;
 						}
 					}
@@ -240,6 +250,17 @@ namespace ParkingBrake
                 vessel.longitude = lon;
             }
         }
+
+		public new bool enabled
+		{
+			set
+			{
+				Log.dbg("my enabled is being set from {0} to {0}", base.enabled, value);
+				base.enabled = value;
+			}
+			get => base.enabled;
+		}
+
 
     }
 

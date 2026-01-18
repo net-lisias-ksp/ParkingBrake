@@ -77,6 +77,9 @@ namespace ParkingBrake
         internal static void dbg(string msg, params object[] @params)
         {
             log.trace(msg, @params);
+			StackTrace stacktrace = new StackTrace();
+			string message = stacktrace.ToString(); // TODO: Remove this method entry on the stackdump. Respect this.skipLevels
+			log.trace(message);
         }
 
         #if DEBUG
