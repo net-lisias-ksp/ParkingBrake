@@ -22,7 +22,7 @@ namespace ParkingBrake
 	public static class LegalMamboJambo
 	{
 		public const string Company = "L Aerospace KSP Division";
-		public const string Copyright = "©2024-2025 LisiasT";
+		public const string Copyright = "©2024-2026 LisiasT";
 		public const string Product = "Parking Brake";
 		public const string Trademark = "Parking Brake™ by Maja, LisiasT; /L™ by LisiasT";
 	}
