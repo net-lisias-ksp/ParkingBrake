@@ -255,7 +255,7 @@ namespace ParkingBrake
 		{
 			set
 			{
-				Log.dbg("my enabled is being set from {0} to {0}", base.enabled, value);
+				Log.dbg("my enabled is being set from {0} to {1}", base.enabled, value);
 				base.enabled = value;
 			}
 			get => base.enabled;
