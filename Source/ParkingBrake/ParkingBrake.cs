@@ -48,7 +48,7 @@ namespace ParkingBrake
 		protected override void OnStart()
         {
 			base.OnStart();
-			this.enabled = HighLogic.LoadedSceneIsFlight;
+			this.enabled = HighLogic.LoadedSceneIsFlight && this.vessel.loaded;
             onParkingBrake.Add(EngageParkingBrake);
 			GameEvents.onGameSceneLoadRequested.Add(this.OnGameSceneLoadRequested);
         }
