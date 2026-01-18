@@ -1,6 +1,6 @@
 ﻿/*
 	This file is part of Parking Brake 
-		© 2021-2025 LisiasT : http://lisias.net <support@lisias.net>
+		© 2021-2026 LisiasT : http://lisias.net <support@lisias.net>
 		© 2018-2021 Maja
 
 	Parking Brake  is licensed as follows:

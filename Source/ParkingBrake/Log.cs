@@ -1,6 +1,6 @@
 ﻿/*
 	This file is part of Parking Brake 
-		© 2014-2025 Lisias T : http://lisias.net <support@lisias.net>
+		© 2021-2026 Lisias T : http://lisias.net <support@lisias.net>
 
 	THIS FILE is licensed to you under:
 
