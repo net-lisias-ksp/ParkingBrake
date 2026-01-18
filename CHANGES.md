@@ -1,5 +1,12 @@
 # Parking Brake :: Changes
 
+* 2026-0118: 0.5.0.6 (LisiasT) for KSP >= 1.3
+	+ Works around a nasty issue where an unidentified 3rd party were mangling with Parking Brake's `VesselModule.enable` attribute.
+	+ Better handling of the `VesselModule`'s life cycle.
+	+ Simplifying logic by simulating a minimalistic state machine on `FixedUpdate`.
+	+ **Finally** updating the `PAW` correctly to reflect the current Parking Brake state.
+	+ Reworks issues:
+		- [#3](https://github.com/net-lisias-ksp/ParkingBrake/issues/3) "Parking brake disengaged" message repeated ad nauseaum
 * 2025-1129: 0.5.0.5 (LisiasT) for KSP >= 1.3
 	+ Works around a Unity's idiosyncrasy. (damn)
 	+ Closes issues:
