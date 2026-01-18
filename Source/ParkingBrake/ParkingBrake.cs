@@ -34,6 +34,14 @@ namespace ParkingBrake
         [KSPField(isPersistant = true)]
         private bool currentBrakeState; // Current state of the brake
 
+		private delegate void FixedUpdateDelegate(bool isNormalBrakesEngaged);
+		private readonly FixedUpdateDelegate[] fixedUpdateHandler;
+
+		public ParkingBrake() : base()
+		{
+			this.fixedUpdateHandler = new FixedUpdateDelegate[] {this.FixedUpdateWhenDeactivated, this.FixedUpdateWhenActivated};
+		}
+
 		public bool BrakeActive
 		{
 			get { return this.currentBrakeState; }
@@ -181,44 +189,42 @@ namespace ParkingBrake
         {
 			if (!this.enabled) return;
 
-            bool isNormalBrakesEngaged = vessel.ActionGroups[KSPActionGroup.Brakes];
+			bool isNormalBrakesEngaged = vessel.ActionGroups[KSPActionGroup.Brakes];
+			this.fixedUpdateHandler[this.currentBrakeState?1:0](isNormalBrakesEngaged);
 
+        }
+
+		private void FixedUpdateWhenActivated(bool isNormalBrakesEngaged)
+		{
 			switch (this.vessel.vesselType)
 			{
 				case VesselType.Base:
 					{
-						if (this.currentBrakeState && !isNormalBrakesEngaged)
+						if (!isNormalBrakesEngaged)
 						{
 							Vessel.ActionGroups.SetGroup(KSPActionGroup.Brakes, true);
 							this.EngageParkingBrake(true);
-							break;
 						}
-						if (!this.currentBrakeState && !isNormalBrakesEngaged) this.DisengageParkingBrake();
 					}
 					break;
 
 				case VesselType.EVA:
 				case VesselType.Rover:
 					{
-						if (!currentBrakeState) break;
 						if (!isNormalBrakesEngaged) this.DisengageParkingBrake();
 					}
 					break;
 
 				default:
 					{
-						if (!currentBrakeState) break;
 						if (!isNormalBrakesEngaged || !vessel.Landed)
 						{
 							// Brake active, disengage
 							DisengageParkingBrake();
-							break;
 						}
 					}
 					break;
 			}
-
-			if (!this.currentBrakeState) return;
 
             vessel.permanentGroundContact = true;
 
@@ -241,6 +247,28 @@ namespace ParkingBrake
             }
         }
 
+		private void FixedUpdateWhenDeactivated(bool isNormalBrakesEngaged)
+		{
+			switch (this.vessel.vesselType)
+			{
+				case VesselType.Base:
+					{
+						if (!isNormalBrakesEngaged) this.DisengageParkingBrake();
+					}
+					break;
+
+				case VesselType.EVA:
+				case VesselType.Rover:
+					{
+					}
+					break;
+
+				default:
+					{
+					}
+					break;
+			}
+		}
     }
 
 }
